@@ -5,10 +5,15 @@ namespace CursoDesignPatterns
 {
     public class Orcamento
     {
-        public double Valor { get; private set; }
-
+        public double Valor { get; set; }
         public IList<Item> Itens { get; private set; }
 
+        public EstadoDeUmOrcamento EstadoAtual { get; set; }
+
+        public void AplicaDescontoExtra()
+        {
+            this.EstadoAtual.AplicaDescontoExtra(this);
+        }
 
         public void AdicionaItens (Item item)
         {
@@ -19,6 +24,23 @@ namespace CursoDesignPatterns
         {
             this.Valor = valor;
             this.Itens = new List<Item>();
+            this.EstadoAtual = new EmAprovacao();
         }
+
+        public void Aprova()
+        {
+            this.EstadoAtual = new Aprovado();
+        }
+
+		public void Reprova()
+		{
+            this.EstadoAtual = new Reprovado();
+		}
+
+		public void Finaliza()
+		{
+			this.EstadoAtual = new Finalizado();
+		}
+
     }
 }

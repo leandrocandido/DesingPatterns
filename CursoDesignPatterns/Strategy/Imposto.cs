@@ -1,8 +1,9 @@
 ﻿using System;
 namespace CursoDesignPatterns
 {
-    public interface Imposto
+    public abstract class Imposto
     {
-        double Calcula(Orcamento orcamento);
+        
+        public abstract double Calcula(Orcamento orcamento);
     }
 }

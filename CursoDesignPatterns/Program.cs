@@ -6,26 +6,18 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
-            /* Imposto iss = new ISS();
-             Imposto icms = new ICMS();
-             Orcamento orcamento = new Orcamento(500);
-             CalculadorImposto calc = new CalculadorImposto();
-             calc.RealizaCalculo(orcamento , iss);
-             calc.RealizaCalculo(orcamento, icms); */
+            Orcamento reforma = new Orcamento(500);
+            Console.WriteLine(reforma.Valor);
 
-            CalculadorDescontos calculador = new CalculadorDescontos();
-            Orcamento orcamento = new Orcamento(500);
+            reforma.AplicaDescontoExtra();
+            Console.WriteLine(reforma.Valor);
 
-            orcamento.AdicionaItens(new Item("caneta",250));
-            orcamento.AdicionaItens(new Item("lapis", 250));
-            orcamento.AdicionaItens(new Item("gealdeira", 250));
-            orcamento.AdicionaItens(new Item("micro", 250));
-            orcamento.AdicionaItens(new Item("xbox", 250));
-            orcamento.AdicionaItens(new Item("fogao", 250));
+            reforma.Aprova();
+            reforma.AplicaDescontoExtra();
+            Console.WriteLine(reforma.Valor);
 
-            double desconto = calculador.Calcula(orcamento);
+            reforma.Finaliza();
 
-            Console.WriteLine(desconto);
 
             Console.ReadKey();
         }
@@ -38,8 +30,24 @@ namespace CursoDesignPatterns
              CalculadorImposto calc = new CalculadorImposto();
              calc.RealizaCalculo(orcamento , iss);
              calc.RealizaCalculo(orcamento, icms);
-
 		}
+
+        private void ChainOfresponsability()
+        {
+			CalculadorDescontos calculador = new CalculadorDescontos();
+			Orcamento orcamento = new Orcamento(500);
+
+			orcamento.AdicionaItens(new Item("caneta", 250));
+			orcamento.AdicionaItens(new Item("lapis", 250));
+			orcamento.AdicionaItens(new Item("gealdeira", 250));
+			orcamento.AdicionaItens(new Item("micro", 250));
+			orcamento.AdicionaItens(new Item("xbox", 250));
+			orcamento.AdicionaItens(new Item("fogao", 250));
+
+			double desconto = calculador.Calcula(orcamento);
+
+			Console.WriteLine(desconto);
+        }
 
     }
 }

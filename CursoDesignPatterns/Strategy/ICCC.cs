@@ -7,7 +7,7 @@ namespace CursoDesignPatterns
         {
         }
 
-        public double Calcula(Orcamento orcamento)
+        public override double Calcula(Orcamento orcamento)
         {
             if (orcamento.Valor < 1000 )
             {
