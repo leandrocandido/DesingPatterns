@@ -6,18 +6,21 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
-            Orcamento reforma = new Orcamento(500);
-            Console.WriteLine(reforma.Valor);
 
-            reforma.AplicaDescontoExtra();
-            Console.WriteLine(reforma.Valor);
+            NotaFiscalBuilder criador = new NotaFiscalBuilder();
 
-            reforma.Aprova();
-            reforma.AplicaDescontoExtra();
-            Console.WriteLine(reforma.Valor);
+            //Fluent Interface e method chaining
+            criador
+            .ParaEmpresa("Caelum ensino e inovacao")
+            .ComCnpj("876.908.6776/0001-45")
+            .ComItem(new ItemDaNota("item 1", 100))
+            .ComItem(new ItemDaNota("item 2", 200))
+            .NaDataAtual()
+            .ComObservacoes("uma observacao qualquer");
 
-            reforma.Finaliza();
-
+            NotaFiscal nf = criador.Constroi();
+            Console.WriteLine(nf.Valorbruto);
+            Console.WriteLine(nf.DataEmissao);
 
             Console.ReadKey();
         }
@@ -48,6 +51,22 @@ namespace CursoDesignPatterns
 
 			Console.WriteLine(desconto);
         }
+
+        private void PadraoState()
+        {
+			Orcamento reforma = new Orcamento(500);
+			Console.WriteLine(reforma.Valor);
+
+			reforma.AplicaDescontoExtra();
+			Console.WriteLine(reforma.Valor);
+
+			reforma.Aprova();
+			reforma.AplicaDescontoExtra();
+			Console.WriteLine(reforma.Valor);
+
+            reforma.Finaliza();
+
+		}
 
     }
 }

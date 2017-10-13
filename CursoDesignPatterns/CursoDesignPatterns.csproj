@@ -9,5 +9,7 @@
     <Folder Include="ChainOfResponsability\" />
     <Folder Include="Strategy\" />
     <Folder Include="Template_Method\" />
+    <Folder Include="State\" />
+    <Folder Include="Builder\" />
   </ItemGroup>
 </Project>
