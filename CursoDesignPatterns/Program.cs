@@ -7,22 +7,31 @@ namespace CursoDesignPatterns
         static void Main(string[] args)
         {
 
-            NotaFiscalBuilder criador = new NotaFiscalBuilder();
-
-            //Fluent Interface e method chaining
-            criador
-            .ParaEmpresa("Caelum ensino e inovacao")
-            .ComCnpj("876.908.6776/0001-45")
-            .ComItem(new ItemDaNota("item 1", 100))
-            .ComItem(new ItemDaNota("item 2", 200))
-            .NaDataAtual()
-            .ComObservacoes("uma observacao qualquer");
-
-            NotaFiscal nf = criador.Constroi();
-            Console.WriteLine(nf.Valorbruto);
-            Console.WriteLine(nf.DataEmissao);
+            PadraoBuilder();
 
             Console.ReadKey();
+        }
+
+        private static void PadraoBuilder()
+        {
+			NotaFiscalBuilder criador = new NotaFiscalBuilder();
+
+			//Fluent Interface e method chaining
+			criador
+			.ParaEmpresa("Caelum ensino e inovacao")
+			.ComCnpj("876.908.6776/0001-45")
+			.ComItem(new ItemDaNota("item 1", 100))
+			.ComItem(new ItemDaNota("item 2", 200))
+			.NaDataAtual()
+			.ComObservacoes("uma observacao qualquer");
+
+            criador.AdicionaAcao(new EnviadorDeEmail());
+            criador.AdicionaAcao(new NotaFiscalDao());
+            criador.AdicionaAcao(new EnviadorDeSMS());
+
+			NotaFiscal nf = criador.Constroi();
+			Console.WriteLine(nf.Valorbruto);
+			Console.WriteLine(nf.DataEmissao);
         }
 
         private void PadraoStrategy()

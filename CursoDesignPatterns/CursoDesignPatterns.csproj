@@ -11,5 +11,6 @@
     <Folder Include="Template_Method\" />
     <Folder Include="State\" />
     <Folder Include="Builder\" />
+    <Folder Include="Observer\" />
   </ItemGroup>
 </Project>
