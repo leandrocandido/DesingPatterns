@@ -66,8 +66,9 @@ namespace CursoDesignPatterns
             return nf;
         }
 
-        public NotaFiscalBuilder()
+        public NotaFiscalBuilder( IList<AcaoAposGerarNota> lstacoes  )
         {
-        }
+            this.todasAcoesASeremExecutadas = lstacoes;
+		}
     }
 }

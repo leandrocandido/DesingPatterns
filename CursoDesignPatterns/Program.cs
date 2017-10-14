@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CursoDesignPatterns
 {
@@ -14,9 +15,17 @@ namespace CursoDesignPatterns
 
         private static void PadraoBuilder()
         {
-			NotaFiscalBuilder criador = new NotaFiscalBuilder();
-
-			//Fluent Interface e method chaining
+          /*  criador.AdicionaAcao(new EnviadorDeEmail());
+            criador.AdicionaAcao(new NotaFiscalDao());
+            criador.AdicionaAcao(new EnviadorDeSMS());
+*/
+            IList<AcaoAposGerarNota> listaAcoes = new List<AcaoAposGerarNota>();
+            listaAcoes.Add(new EnviadorDeEmail());
+            listaAcoes.Add(new NotaFiscalDao());
+            listaAcoes.Add(new EnviadorDeSMS());
+            NotaFiscalBuilder criador = new NotaFiscalBuilder(listaAcoes);
+			
+            //Fluent Interface e method chaining
 			criador
 			.ParaEmpresa("Caelum ensino e inovacao")
 			.ComCnpj("876.908.6776/0001-45")
@@ -24,10 +33,6 @@ namespace CursoDesignPatterns
 			.ComItem(new ItemDaNota("item 2", 200))
 			.NaDataAtual()
 			.ComObservacoes("uma observacao qualquer");
-
-            criador.AdicionaAcao(new EnviadorDeEmail());
-            criador.AdicionaAcao(new NotaFiscalDao());
-            criador.AdicionaAcao(new EnviadorDeSMS());
 
 			NotaFiscal nf = criador.Constroi();
 			Console.WriteLine(nf.Valorbruto);
