@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CursoDesignPatterns", "CursoDesignPatterns\CursoDesignPatterns.csproj", "{EB3A21CC-C396-4F1B-9768-E66C97020662}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesingPatterns2", "DesingPatterns2\DesingPatterns2.csproj", "{DE6F3408-9E60-4629-9302-215FDDC730F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{EB3A21CC-C396-4F1B-9768-E66C97020662}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB3A21CC-C396-4F1B-9768-E66C97020662}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB3A21CC-C396-4F1B-9768-E66C97020662}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE6F3408-9E60-4629-9302-215FDDC730F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE6F3408-9E60-4629-9302-215FDDC730F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE6F3408-9E60-4629-9302-215FDDC730F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE6F3408-9E60-4629-9302-215FDDC730F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
