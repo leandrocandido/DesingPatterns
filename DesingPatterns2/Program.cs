@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq.Expressions;
 using DesingPatterns2.Cap1;
 using DesingPatterns2.Cap2;
 using DesingPatterns2.Cap3;
+using DesingPatterns2.Cap4;
 
 namespace DesingPatterns2
 {
@@ -13,7 +15,20 @@ namespace DesingPatterns2
         static void Main(string[] args)
         {
             
-            Console.ReadKey();
+			Console.ReadKey();	
+        }
+
+        static void Interpreter()
+        {
+			/*  IExpressao esquerda = new Soma( new Soma(new Numero(1) , new Numero(100)), new Numero(10));
+               IExpressao direita = new Subtracao(new Numero(20), new Numero(10));
+               IExpressao soma = new Soma(esquerda, direita);
+               Console.WriteLine(soma.Avalia());
+   */
+            Expression soma = Expression.Add(Expression.Constant(10), Expression.Constant(100));
+			Func<int> funcao = Expression.Lambda<Func<int>>(soma).Compile();
+			Console.WriteLine(funcao());
+
         }
 
         static void Memento()
