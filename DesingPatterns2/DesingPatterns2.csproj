@@ -13,5 +13,6 @@
     <Folder Include="Cap2\" />
     <Folder Include="Cap3\" />
     <Folder Include="Cap4\" />
+    <Folder Include="Cap5\" />
   </ItemGroup>
 </Project>

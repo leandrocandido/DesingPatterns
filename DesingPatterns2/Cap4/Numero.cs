@@ -1,18 +1,27 @@
 ﻿using System;
+using DesingPatterns2.Cap5;
+
 namespace DesingPatterns2.Cap4
 {
     public class Numero : IExpressao
     {
-        private int numero;
+        public int Valor { get; private set; }
 
         public int Avalia()
         {
-            return this.numero;
+            return this.Valor;
         }
+
+		public void Aceita(ImpressoraVisitor impressora)
+		{
+			impressora.ImprimeNumero(this);
+		}
 
         public Numero(int numero)
         {
-            this.numero = numero;
+            this.Valor = numero;
         }
+
+		
     }
 }

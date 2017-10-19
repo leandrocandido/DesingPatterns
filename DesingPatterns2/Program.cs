@@ -7,6 +7,7 @@ using DesingPatterns2.Cap1;
 using DesingPatterns2.Cap2;
 using DesingPatterns2.Cap3;
 using DesingPatterns2.Cap4;
+using DesingPatterns2.Cap5;
 
 namespace DesingPatterns2
 {
@@ -14,21 +15,23 @@ namespace DesingPatterns2
     {
         static void Main(string[] args)
         {
-            
+            Interpreter();
 			Console.ReadKey();	
         }
 
         static void Interpreter()
         {
-			/*  IExpressao esquerda = new Soma( new Soma(new Numero(1) , new Numero(100)), new Numero(10));
-               IExpressao direita = new Subtracao(new Numero(20), new Numero(10));
-               IExpressao soma = new Soma(esquerda, direita);
-               Console.WriteLine(soma.Avalia());
-   */
-            Expression soma = Expression.Add(Expression.Constant(10), Expression.Constant(100));
+			IExpressao esquerda = new Soma( new Soma(new Numero(1) , new Numero(100)), new Numero(10));
+            IExpressao direita = new Subtracao(new Numero(20), new Numero(10));
+            IExpressao soma = new Soma(esquerda, direita);
+            Console.WriteLine(soma.Avalia());
+   
+    /*        Expression soma = Expression.Add(Expression.Constant(10), Expression.Constant(100));
 			Func<int> funcao = Expression.Lambda<Func<int>>(soma).Compile();
 			Console.WriteLine(funcao());
-
+*/
+            ImpressoraVisitor impressora = new ImpressoraVisitor();
+            soma.Aceita(impressora);
         }
 
         static void Memento()
