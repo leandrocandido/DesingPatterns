@@ -12,7 +12,7 @@ namespace DesingPatterns2.Cap4
             return this.Valor;
         }
 
-		public void Aceita(ImpressoraVisitor impressora)
+		public void Aceita(IVisitor impressora)
 		{
 			impressora.ImprimeNumero(this);
 		}

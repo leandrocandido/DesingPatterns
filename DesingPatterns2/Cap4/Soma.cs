@@ -21,7 +21,7 @@ namespace DesingPatterns2.Cap4
             this.Direita = direita;
         }
 
-        public void Aceita(ImpressoraVisitor impressora)
+        public void Aceita(IVisitor impressora)
         {
             impressora.ImprimeSoma(this);
         }

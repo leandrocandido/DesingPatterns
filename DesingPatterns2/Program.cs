@@ -8,6 +8,7 @@ using DesingPatterns2.Cap2;
 using DesingPatterns2.Cap3;
 using DesingPatterns2.Cap4;
 using DesingPatterns2.Cap5;
+using DesingPatterns2.Cap6;
 
 namespace DesingPatterns2
 {
@@ -15,23 +16,37 @@ namespace DesingPatterns2
     {
         static void Main(string[] args)
         {
-            Interpreter();
+
+            IMensagem mensagem = new MensagemCliente("leandro");
+            IEnviador enviador = new EnviaPorEmail();
+            mensagem.Enviador = enviador;
+            mensagem.Envia();
+            
 			Console.ReadKey();	
         }
 
+		static void InterpreterVisitor()
+		{
+			IExpressao esquerda = new Soma(new Soma(new Numero(1), new Numero(100)), new Numero(10));
+			IExpressao direita = new Subtracao(new Numero(20), new Numero(10));
+			IExpressao soma = new Soma(esquerda, direita);
+            Console.WriteLine(soma.Avalia());
+			ImpressoraVisitor impressora = new ImpressoraVisitor();
+			soma.Aceita(impressora);
+		}
+
+
         static void Interpreter()
         {
-			IExpressao esquerda = new Soma( new Soma(new Numero(1) , new Numero(100)), new Numero(10));
-            IExpressao direita = new Subtracao(new Numero(20), new Numero(10));
-            IExpressao soma = new Soma(esquerda, direita);
-            Console.WriteLine(soma.Avalia());
+			//IExpressao esquerda = new Soma( new Soma(new Numero(1) , new Numero(100)), new Numero(10));
+            //IExpressao direita = new Subtracao(new Numero(20), new Numero(10));
+            //IExpressao soma = new Soma(esquerda, direita);
+            //Console.WriteLine(soma.Avalia());
    
-    /*        Expression soma = Expression.Add(Expression.Constant(10), Expression.Constant(100));
+            Expression soma = Expression.Add(Expression.Constant(10), Expression.Constant(100));
 			Func<int> funcao = Expression.Lambda<Func<int>>(soma).Compile();
 			Console.WriteLine(funcao());
-*/
-            ImpressoraVisitor impressora = new ImpressoraVisitor();
-            soma.Aceita(impressora);
+
         }
 
         static void Memento()
