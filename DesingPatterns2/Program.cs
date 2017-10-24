@@ -9,6 +9,7 @@ using DesingPatterns2.Cap3;
 using DesingPatterns2.Cap4;
 using DesingPatterns2.Cap5;
 using DesingPatterns2.Cap6;
+using DesingPatterns2.Cap7;
 
 namespace DesingPatterns2
 {
@@ -16,13 +17,25 @@ namespace DesingPatterns2
     {
         static void Main(string[] args)
         {
+            FilaDeTrabalho fila = new FilaDeTrabalho();
+            Pedido pedido1 = new Pedido("mauricio", 100);
+            Pedido pedido2 = new Pedido("marcelo", 200);
+            fila.Adiciona(new PagaPedido(pedido1));
+            fila.Adiciona(new PagaPedido(pedido2));
 
+            fila.Adiciona(new FinalizaPedido(pedido1));
+
+
+			Console.ReadKey();	
+        }
+
+
+        static void Bridge()
+        {
             IMensagem mensagem = new MensagemCliente("leandro");
             IEnviador enviador = new EnviaPorEmail();
             mensagem.Enviador = enviador;
             mensagem.Envia();
-            
-			Console.ReadKey();	
         }
 
 		static void InterpreterVisitor()
